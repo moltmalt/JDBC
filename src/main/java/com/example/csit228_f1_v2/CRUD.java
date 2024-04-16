@@ -46,31 +46,61 @@ public class CRUD {
     }
 
     public boolean readData(String name, String password) {
-
-
+        boolean check = false;
+        String dbName, dbPassword;
         try (Connection c = getConnection();
              PreparedStatement statement = c.prepareStatement(
-                     "SELECT * FROM users WHERE name = ? AND password = ?"
+                     "SELECT * FROM users"
              )) {
-            statement.setString(1, name);
-            statement.setString(2, password);
             ResultSet present = statement.executeQuery();
+
+            while(present.next()){
+                if(present.getString("name").equals(name) &&
+                        present.getString("password").equals(password) && present.getString("password") != null){
+                    check = true;
+                }
+            }
 
         } catch (SQLException e) {
             System.out.println("Exception in InsertData");
             e.printStackTrace();
         }
+
+        return check;
     }
 
-    public boolean updateData(String name, String password, String newName, String newPassword) {
+    public boolean readData(String name) {
+        boolean check = false;
+        String dbName, dbPassword;
+        try (Connection c = getConnection();
+             PreparedStatement statement = c.prepareStatement(
+                     "SELECT * FROM users"
+             )) {
+            ResultSet present = statement.executeQuery();
+
+            while(present.next()){
+                if(present.getString("name").equals(name) && present.getString("name") != null){
+                    check = true;
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Exception in InsertData");
+            e.printStackTrace();
+        }
+
+        return check;
+    }
+
+    public boolean updateData(String name, String newPassword) {
         boolean updated = false;
         try (Connection c = getConnection();
              PreparedStatement statement = c.prepareStatement(
                      "UPDATE users SET password = ? WHERE name = ? "
              )) {
 
-            statement.setString(1, newName);
-            statement.setString(2, newPassword);
+            statement.setString(1, newPassword);
+            statement.setString(2, name);
             int rowsUpdated = statement.executeUpdate();
             System.out.println("Rows updated: " + rowsUpdated);
             ResultSet res = statement.getResultSet();
@@ -81,6 +111,8 @@ public class CRUD {
         }
         return updated;
     }
+
+
 
     public boolean deleteData(String name, String password){
         boolean deleted = false;
