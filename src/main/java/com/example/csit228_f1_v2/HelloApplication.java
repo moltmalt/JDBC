@@ -118,7 +118,7 @@ public class HelloApplication extends Application {
                 CRUD crud = new CRUD();
                 System.out.println("Logging in...");
 
-                if(crud.readData(tfUsername.getText(), pfPassword.getText())){
+                if(!crud.readData(tfUsername.getText(), pfPassword.getText())){
                     crud.insertData(tfUsername.getText(), pfPassword.getText());
                     txtWelcome.setText("Successful registration! Hello " + tfUsername.getText());
                 }else{
@@ -131,12 +131,30 @@ public class HelloApplication extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 CRUD crud = new CRUD();
-                System.out.println("Registering...");
+                System.out.println("Updating...");
+
+                if(!crud.readData(tfUsername.getText(), pfPassword.getText())){
+                    if(crud.readData(tfUsername.getText()) && crud.readData(tfUsername.getText())){
+                        crud.updateData(tfUsername.getText(), pfPassword.getText());
+                        txtWelcome.setText("Wrong pass so I changed it!");
+                    }
+                }else{
+                    txtWelcome.setText("Wring inputs/Password still same");
+                }
+            }
+        });
+
+        btnDelete.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                CRUD crud = new CRUD();
+                System.out.println("Updating...");
 
                 if(crud.readData(tfUsername.getText(), pfPassword.getText())){
-                    crud.insertData(tfUsername.getText(), pfPassword.getText());
+                    crud.deleteData(tfUsername.getText(), pfPassword.getText());
+                    txtWelcome.setText("Successful deactivation!");
                 }else{
-                    txtWelcome.setText("Already registered! Log-in please!");
+                    txtWelcome.setText("Incorrect credentials!");
                 }
             }
         });
