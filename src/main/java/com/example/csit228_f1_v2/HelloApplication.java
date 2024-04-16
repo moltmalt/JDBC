@@ -25,19 +25,16 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
-//        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-//        stage.setTitle("Hello!");
-//        stage.setScene(scene);
+
 
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         Text txtWelcome = new Text("Welcome to CIT");
-        txtWelcome.setFont(Font.font("Chiller", FontWeight.EXTRA_BOLD, 69));
+        txtWelcome.setFont(Font.font("Times New Roman", FontWeight.EXTRA_BOLD, 69));
         txtWelcome.setFill(Color.RED);
-//        grid.setAlignment();
+
         grid.setPadding(new Insets(20));
-//        grid.
+
         txtWelcome.setTextAlignment(TextAlignment.CENTER);
         grid.add(txtWelcome, 0, 0, 3, 1);
 
@@ -49,7 +46,7 @@ public class HelloApplication extends Application {
         TextField tfUsername = new TextField();
         grid.add(tfUsername, 1, 1);
         tfUsername.setFont(Font.font(30));
-//        tfUsername.setMaxWidth(150);
+
 
         Label lbPassword = new Label("Password");
         lbPassword.setFont(Font.font(30));
@@ -66,18 +63,7 @@ public class HelloApplication extends Application {
         tmpPassword.setVisible(false);
 
         ToggleButton btnShow = new ToggleButton("( )");
-//        btnShow.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent actionEvent) {
-//                if (btnShow.isSelected()) {
-//                    tmpPassword.setText(pfPassword.getText());
-//                    tmpPassword.setVisible(true);
-//                } else {
-//                    tmpPassword.setVisible(false);
-//                    pfPassword.setText(tmpPassword.getText());
-//                }
-//            }
-//        });
+
         btnShow.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -98,21 +84,59 @@ public class HelloApplication extends Application {
         btnShow.setOnMouseExited(release);
         grid.add(btnShow, 2,2);
 
+        Button btnRegister = new Button("Register");
+        btnRegister.setFont(Font.font(40));
+        grid.add(btnRegister, 0, 5, 2, 1);
+
         Button btnLogin = new Button("Log In");
         btnLogin.setFont(Font.font(40));
-        grid.add(btnLogin, 0, 3, 2, 1);
+        grid.add(btnLogin, 0, 6, 2, 1);
+
+        Button btnUpdate = new Button("Update");
+        btnLogin.setFont(Font.font(40));
+        grid.add(btnUpdate, 0, 7, 2, 1);
+
+        Button btnDelete = new Button("Deactivate");
+        btnLogin.setFont(Font.font(40));
+        grid.add(btnDelete, 0, 8, 2, 1);
 
         btnLogin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("Hello");
-                try {
-                    Parent p = FXMLLoader.load(getClass().getResource("homepage.fxml"));
-                    Scene s = new Scene(p);
-                    stage.setScene(s);
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                CRUD crud = new CRUD();
+                if(crud.readData(tfUsername.getText(), pfPassword.getText())){
+                    txtWelcome.setText("Successful Log-in!");
+                }else{
+                    txtWelcome.setText("Unsuccessful Log-in!");
+                }
+            }
+        });
+
+        btnRegister.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                CRUD crud = new CRUD();
+                System.out.println("Logging in...");
+
+                if(crud.readData(tfUsername.getText(), pfPassword.getText())){
+                    crud.insertData(tfUsername.getText(), pfPassword.getText());
+                    txtWelcome.setText("Successful registration! Hello " + tfUsername.getText());
+                }else{
+                    txtWelcome.setText("Already registered! Log-in please!");
+                }
+            }
+        });
+
+        btnUpdate.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                CRUD crud = new CRUD();
+                System.out.println("Registering...");
+
+                if(crud.readData(tfUsername.getText(), pfPassword.getText())){
+                    crud.insertData(tfUsername.getText(), pfPassword.getText());
+                }else{
+                    txtWelcome.setText("Already registered! Log-in please!");
                 }
             }
         });
