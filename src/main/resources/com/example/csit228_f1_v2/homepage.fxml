@@ -2,9 +2,80 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.HomeController">
-   <children>
-      <Button layoutX="445.0" layoutY="23.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="141.0" text="Deactivate" />
-   </children>
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.Controller">
+   <bottom>
+      <AnchorPane prefHeight="217.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="133.0" layoutY="9.0" text="My Cat Collection">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="33.0" layoutY="72.0" text="Cat1" />
+            <Label layoutX="114.0" layoutY="72.0" text="Cat2" />
+            <Label layoutX="197.0" layoutY="72.0" text="Cat3" />
+            <Label layoutX="275.0" layoutY="72.0" text="Cat4" />
+            <Label layoutX="351.0" layoutY="72.0" text="Cat5" />
+            <Label layoutX="72.0" layoutY="36.0" prefHeight="18.0" prefWidth="274.0" style="-fx-alignment: center;" text="Maximum of 5 cats :3 Default cats are already given" />
+            <Button layoutX="16.0" layoutY="164.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="59.0" text="Sell" />
+            <Button layoutX="96.0" layoutY="162.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Sell" />
+            <Label layoutX="18.0" layoutY="98.0" text="CatName1" />
+            <Label layoutX="98.0" layoutY="97.0" text="CatName2" />
+            <Label layoutX="181.0" layoutY="97.0" text="CatName3" />
+            <Label layoutX="259.0" layoutY="97.0" text="CatName4" />
+            <Button layoutX="179.0" layoutY="162.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Sell" />
+            <Button layoutX="336.0" layoutY="162.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="61.0" text="Sell" />
+            <Button layoutX="16.0" layoutY="132.0" mnemonicParsing="false" text="Rename" />
+            <Button layoutX="96.0" layoutY="131.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Rename" />
+            <Button layoutX="178.0" layoutY="131.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Rename" />
+            <Button layoutX="255.0" layoutY="162.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="64.0" text="Sell" />
+            <Button layoutX="255.0" layoutY="131.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="63.0" text="Rename" />
+            <Button layoutX="336.0" layoutY="131.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="61.0" text="Button" />
+            <Label layoutX="335.0" layoutY="97.0" text="CatName5" />
+            <Line endX="-51.500030517578125" endY="147.60000610351562" layoutX="467.0" layoutY="65.0" startX="-51.5" startY="-59.0" />
+            <Label layoutX="455.0" layoutY="9.0" text="Create a Cat!">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="442.0" layoutY="36.0" text="Add a cat to the cat table" />
+            <TextField id="txtCreateCatName" layoutX="434.0" layoutY="64.0" promptText="Cat Name" />
+            <TextField id="txrCreateCatImage" layoutX="435.0" layoutY="94.0" promptText="Cat ASCII Image" />
+            <Label layoutX="434.0" layoutY="167.0" text="Cats must have unique names" />
+            <Button layoutX="486.0" layoutY="132.0" mnemonicParsing="false" text="Create!" />
+         </children>
+      </AnchorPane>
+   </bottom>
+   <right>
+      <AnchorPane prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="214.0" layoutY="7.0" prefHeight="18.0" prefWidth="170.0" style="-fx-alignment: center;" text="Settings">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="53.0" prefHeight="18.0" prefWidth="150.0" style="-fx-alignment: center;" text="Update Password">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfOldPassword" layoutX="29.0" layoutY="78.0" promptText="Old Password" />
+            <TextField fx:id="tfNewPassword" layoutX="29.0" layoutY="108.0" promptText="New Password" />
+            <Button id="btnChangePassword" layoutX="48.0" layoutY="139.0" mnemonicParsing="false" onAction="#updatePassword" text="Change Password" />
+            <Label fx:id="lblPasswordInfo" layoutX="26.0" layoutY="167.0" prefHeight="18.0" prefWidth="156.0" style="-fx-alignment: center;" />
+            <Button id="btnLogOut" layoutX="534.0" layoutY="8.0" mnemonicParsing="false" onAction="#logout" text="Log-out" />
+            <Button id="btnDeactivate" layoutX="414.0" layoutY="102.0" mnemonicParsing="false" onAction="#deactivate" text="Deactivate" />
+            <Label layoutX="384.0" layoutY="53.0" prefHeight="18.0" prefWidth="132.0" text="Account Deactivation">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="336.0" layoutY="78.0" text="This will automatically delete your account." />
+            <Line endX="769.0" layoutX="-169.0" layoutY="185.0" startX="-100.0" />
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

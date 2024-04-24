@@ -1,38 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="pnMain" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.HelloController">
-   <children>
-      <GridPane fx:id="pnLogin" alignment="CENTER" hgap="22.0" vgap="10.0">
-          <padding>
-              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-          </padding>
-         <columnConstraints>
-            <ColumnConstraints halignment="CENTER" />
-            <ColumnConstraints />
-            <ColumnConstraints halignment="CENTER" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints valignment="CENTER" />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-         </rowConstraints>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.Controller">
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="265.0" style="-fx-background-color: #FFA500;" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Label" GridPane.rowIndex="1" />
-            <TextField minWidth="125.0" prefHeight="28.0" prefWidth="125.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-            <Label text="Label" GridPane.rowIndex="3" />
-            <TextField accessibleRole="PASSWORD_FIELD" prefHeight="25.0" prefWidth="59.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" text="Sign In" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: RED;" text="WELCOME TO CITTTTT" textAlignment="CENTER" GridPane.columnSpan="3" />
+            <Label layoutX="36.0" layoutY="200.0" prefHeight="34.0" prefWidth="216.0" text="Cat Collection System" textAlignment="CENTER" BorderPane.alignment="TOP_CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="89.0" layoutY="83.0" text="🐱">
+               <font>
+                  <Font size="87.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="336.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField id="tfUsername" fx:id="tfUsername" layoutX="71.0" layoutY="153.0" prefHeight="26.0" prefWidth="191.0" promptText="Username" />
+            <TextField id="tmpPassword" fx:id="pfPassword" layoutX="71.0" layoutY="194.0" prefHeight="26.0" prefWidth="190.0" promptText="Password" />
+            <Circle layoutX="53.0" layoutY="158.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+            <Ellipse layoutX="53.0" layoutY="171.0" radiusX="10.0" radiusY="5.0" stroke="BLACK" strokeType="INSIDE" />
+            <Button layoutX="270.0" layoutY="195.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="34.0" text="👁" />
+            <Circle layoutX="48.0" layoutY="200.0" radius="8.0" stroke="WHITE" strokeType="INSIDE" />
+            <Label fx:id="lblInfo" layoutX="37.0" layoutY="118.0" prefHeight="20.0" prefWidth="267.0" style="-fx-alignment: center;" text="test" textAlignment="JUSTIFY">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="71.0" layoutY="244.0" mnemonicParsing="false" onAction="#register" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #FFA500;" text="Register" />
+            <Line endX="-84.39998626708984" endY="10.600006103515625" layoutX="147.0" layoutY="199.0" startX="-100.0" strokeWidth="2.0" />
+            <Line endX="-70.98577117919922" endY="-94.98577880859375" layoutX="135.0" layoutY="305.0" startX="-79.00353240966797" startY="-89.77865600585938" strokeWidth="2.0" />
+            <Line endX="-159.19287109375" endY="-129.39999389648438" layoutX="218.0" layoutY="338.0" startX="-163.41775512695312" startY="-125.3822021484375" strokeWidth="2.0" />
+            <Button layoutX="185.0" layoutY="244.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #FFA500;" text="Log-in" />
          </children>
-      </GridPane>
-   </children>
-</AnchorPane>
+      </AnchorPane>
+   </center>
+</BorderPane>
