@@ -340,7 +340,7 @@ public class CRUD {
 
     public void deleteCatRow(Map<String, String> catRow) {
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement("DELETE FROM tblcats WHERE catName = ?")) {
+             PreparedStatement statement = connection.prepareStatement("DELETE FROM tblcats WHERE catName = ? LIMIT 1")) {
 
             statement.setString(1, catRow.get("catName"));
             statement.executeUpdate();
