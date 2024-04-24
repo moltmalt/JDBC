@@ -36,7 +36,7 @@
                <font>
                   <Font size="9.0" />
                </font></Button>
-            <Button layoutX="336.0" layoutY="155.0" mnemonicParsing="false" onAction="#deleteCat" prefHeight="9.0" prefWidth="62.0" style="-fx-background-color: #f94449;" text="Sell">
+            <Button fx:id="sellCat5" layoutX="336.0" layoutY="155.0" mnemonicParsing="false" onAction="#deleteCat" prefHeight="9.0" prefWidth="62.0" style="-fx-background-color: #f94449;" text="Sell">
                <font>
                   <Font size="9.0" />
                </font></Button>

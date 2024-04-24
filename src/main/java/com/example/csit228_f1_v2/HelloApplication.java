@@ -18,7 +18,6 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         CRUD crud = new CRUD();
-        System.out.println("Hello");
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("login-view.fxml"));
             Parent root = loader.load();
