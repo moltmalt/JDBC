@@ -15,12 +15,9 @@ public class CRUD {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             c = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            System.out.println("DB Connection [SUCCESS]");
         } catch (SQLException e) {
-            System.out.println("SQL Exception HERE");
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            System.out.println("Class Exception");
             e.printStackTrace();
         }
         return c;
@@ -50,7 +47,6 @@ public class CRUD {
         try (Connection c = getConnection()) {
             Statement statement = c.createStatement();
             statement.execute(query);
-            System.out.println("Table 1 created successfully!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -67,7 +63,6 @@ public class CRUD {
         try (Connection c = getConnection()) {
             Statement statement = c.createStatement();
             statement.execute(query);
-            System.out.println("Table 2 created successfully!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -82,7 +77,6 @@ public class CRUD {
             connection.setAutoCommit(false);
 
             if (usernameExists(connection, username)) {
-                System.out.println("Username already exists!");
                 return false;
             }
 
@@ -92,19 +86,16 @@ public class CRUD {
                 statement.setString(1, username);
                 statement.setString(2, password);
                 int num = statement.executeUpdate();
-                System.out.println("Rows inserted: " + num);
                 if (num != 0) inserted = true;
             }
             connection.commit();
         } catch (SQLException e) {
-            System.out.println("Exception in insertData");
             e.printStackTrace();
             try {
                 if (connection != null) {
                     connection.rollback();
                 }
             } catch (SQLException rollbackEx) {
-                System.out.println("Error rolling back transaction.");
                 rollbackEx.printStackTrace();
             }
         } finally {
@@ -114,7 +105,6 @@ public class CRUD {
                     connection.close();
                 }
             } catch (SQLException closeEx) {
-                System.out.println("Error closing connection.");
                 closeEx.printStackTrace();
             }
         }
@@ -135,7 +125,6 @@ public class CRUD {
                 exists = (count > 0);
             }
         } catch (SQLException e) {
-            System.out.println("Exception in usernameExists");
             e.printStackTrace();
         }
 
@@ -159,7 +148,6 @@ public class CRUD {
             }
 
         } catch (SQLException e) {
-            System.out.println("Exception in InsertData");
             e.printStackTrace();
         }
 
@@ -180,7 +168,6 @@ public class CRUD {
             }
 
         } catch (SQLException e) {
-            System.out.println("Exception in usernameExists");
             e.printStackTrace();
         }
 
@@ -204,7 +191,6 @@ public class CRUD {
             }
 
         } catch (SQLException e) {
-            System.out.println("Exception in InsertData");
             e.printStackTrace();
         }
 
@@ -226,7 +212,6 @@ public class CRUD {
             }
 
         } catch (SQLException e) {
-            System.out.println("Exception in InsertData");
             e.printStackTrace();
         }
 
@@ -243,7 +228,6 @@ public class CRUD {
             statement.setString(1, newPassword);
             statement.setString(2, username);
             int rowsUpdated = statement.executeUpdate();
-            System.out.println("Rows updated: " + rowsUpdated);
             ResultSet res = statement.getResultSet();
             if (rowsUpdated != 0) updated = true;
 
@@ -263,10 +247,8 @@ public class CRUD {
 
             statement.setString(1, username);
             int rowsDeleted = statement.executeUpdate();
-            System.out.println("Rows deleted: " + rowsDeleted);
             if (rowsDeleted != 0) deleted = true;
         } catch (SQLException e) {
-            System.out.println("Exception in DeleteData");
             e.printStackTrace();
         }
         return deleted;
@@ -287,7 +269,6 @@ public class CRUD {
             }
 
         } catch (SQLException e) {
-            System.out.println("Exception in catExists");
             e.printStackTrace();
         }
 
@@ -296,7 +277,6 @@ public class CRUD {
 
     public boolean createCat(String catName, String catImage, int sessionID) {
         if (catExists(catName)) {
-            System.out.println("Cat already exists!");
             return false;
         }
 
@@ -310,12 +290,9 @@ public class CRUD {
             statement.setString(2, catName);
             statement.setString(3, catImage);
             int num = statement.executeUpdate();
-            System.out.println("Rows inserted: " + num);
             if (num != 0) inserted = true;
-            System.out.println("Cat will load to your collection!");
 
         } catch (SQLException e) {
-            System.out.println("Exception in InsertData");
             e.printStackTrace();
         }
 
@@ -339,7 +316,6 @@ public class CRUD {
                 catData.add(catRow);
             }
         } catch (SQLException e) {
-            System.out.println("Exception in getCatData");
             e.printStackTrace();
         }
 
@@ -356,7 +332,6 @@ public class CRUD {
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("Exception in getCatData");
             e.printStackTrace();
         }
 
@@ -369,9 +344,7 @@ public class CRUD {
 
             statement.setString(1, catRow.get("catName"));
             statement.executeUpdate();
-            System.out.println("Cat deleted successfully.");
         } catch (SQLException e) {
-            System.out.println("Error deleting cat.");
             e.printStackTrace();
         }
     }

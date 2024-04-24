@@ -70,7 +70,6 @@ public class Controller {
     public void login(ActionEvent e) {
         CRUD crud = new CRUD();
         if(crud.readData(tfUsername.getText(), pfPassword.getText())){
-            System.out.println("Hello");
             sessionUsername = tfUsername.getText();
             sessionID = crud.getUserID(sessionUsername);
             try {
@@ -106,7 +105,6 @@ public class Controller {
 
     public void register(ActionEvent e) {
         CRUD crud = new CRUD();
-        System.out.println("Registering " + tfUsername.getText());
 
         if(crud.readData(tfUsername.getText(), pfPassword.getText())){
             lblInfo.setText("Already registered! Log-in please!");
@@ -120,7 +118,6 @@ public class Controller {
 
     public void updatePassword(ActionEvent e) {
         CRUD crud = new CRUD();
-        System.out.println("Updating...");
 
         if(crud.readData(sessionUsername, tfOldPassword.getText())){
             crud.updateData(sessionUsername, tfNewPassword.getText());
@@ -132,7 +129,6 @@ public class Controller {
 
     public void deactivate(ActionEvent e) {
         CRUD crud = new CRUD();
-        System.out.println("Deleting...");
         crud.deleteData(sessionUsername);
         logout(e);
     }
@@ -300,7 +296,6 @@ public class Controller {
         List<Map<String, String>> catData = crud.getCatData(sessionID);
         int buttonNumber = getButtonNumber(e);
 
-        System.out.println(buttonNumber);
         if (buttonNumber <= catData.size()) {
             Map<String, String> catRow = catData.get(buttonNumber - 1);
             crud.deleteCatRow(catRow);
