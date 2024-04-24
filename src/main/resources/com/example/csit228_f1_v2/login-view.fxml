@@ -30,7 +30,7 @@
             <Ellipse layoutX="53.0" layoutY="171.0" radiusX="10.0" radiusY="5.0" stroke="BLACK" strokeType="INSIDE" />
             <Button layoutX="270.0" layoutY="195.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="34.0" text="👁" />
             <Circle layoutX="48.0" layoutY="200.0" radius="8.0" stroke="WHITE" strokeType="INSIDE" />
-            <Label fx:id="lblInfo" layoutX="37.0" layoutY="118.0" prefHeight="20.0" prefWidth="267.0" style="-fx-alignment: center;" text="test" textAlignment="JUSTIFY">
+            <Label fx:id="lblInfo" layoutX="37.0" layoutY="118.0" prefHeight="20.0" prefWidth="267.0" style="-fx-alignment: center;" textAlignment="JUSTIFY">
                <font>
                   <Font size="14.0" />
                </font>

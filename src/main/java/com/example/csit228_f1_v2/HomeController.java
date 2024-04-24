@@ -16,13 +16,13 @@ public class HomeController extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        System.out.println("Hello");
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
             Parent root = loader.load();
             Controller controller = loader.getController();
             controller.setStage(primaryStage);
             primaryStage.setScene(new Scene(root, 600, 400));
+            primaryStage.setTitle("Cat Collection System");
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();

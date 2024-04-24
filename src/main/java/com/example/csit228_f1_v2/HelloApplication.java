@@ -17,6 +17,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        CRUD crud = new CRUD();
         System.out.println("Hello");
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("login-view.fxml"));
@@ -25,7 +26,10 @@ public class HelloApplication extends Application {
             controller.setStage(primaryStage); // Set the stage to the controller
             primaryStage.setTitle("Your Title");
             primaryStage.setScene(new Scene(root, 600, 400));
+            primaryStage.setTitle("Cat Collection System");
             primaryStage.show();
+            crud.createTable1();
+            crud.createTable2();
         } catch (IOException e) {
             e.printStackTrace();
         }
